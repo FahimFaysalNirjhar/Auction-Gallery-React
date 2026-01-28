@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "DSLR Camera",
+    "description": "High-quality DSLR camera with 24MP sensor and 4K video recording.",
+    "currentBidPrice": 450,
+    "timeLeft": "2h 15m",
+    "bidsCount": 12,
+    "image": "https://i.ibb.co.com/nMQQSS8f/Bid1-min.png"
+  },
+  {
+    "id": 2,
+    "title": "Acoustic Guitar",
+    "description": "Wooden acoustic guitar with rich sound and smooth fretboard.",
+    "currentBidPrice": 180,
+    "timeLeft": "5h 40m",
+    "bidsCount": 8,
+    "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d"
+  },
+  {
+    "id": 3,
+    "title": "Gaming Laptop",
+    "description": "Powerful laptop with RTX graphics, 16GB RAM, and SSD storage.",
+    "currentBidPrice": 920,
+    "timeLeft": "1h 5m",
+    "bidsCount": 20,
+    "image": "https://i.ibb.co.com/JjsdChGz/Bid3-min.png"
+  },
+  {
+    "id": 4,
+    "title": "Luxury Wrist Watch",
+    "description": "Elegant stainless steel watch with water resistance.",
+    "currentBidPrice": 300,
+    "timeLeft": "8h 10m",
+    "bidsCount": 5,
+    "image": "https://i.ibb.co.com/rRdtRt3B/Bid4-min.png"
+  },
+  {
+    "id": 5,
+    "title": "Office Chair",
+    "description": "Ergonomic office chair with lumbar support and adjustable height.",
+    "currentBidPrice": 95,
+    "timeLeft": "3h 25m",
+    "bidsCount": 7,
+    "image": "https://i.ibb.co.com/j9mzmM7y/Bid5-min.png"
+  },
+  {
+    "id": 6,
+    "title": "Classic Novel Book",
+    "description": "Hardcover edition of a bestselling classic novel.",
+    "currentBidPrice": 25,
+    "timeLeft": "12h 00m",
+    "bidsCount": 3,
+    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794"
+  },
+  {
+    "id": 7,
+    "title": "Fresh Flower Bouquet",
+    "description": "Beautiful bouquet of mixed seasonal flowers.",
+    "currentBidPrice": 40,
+    "timeLeft": "6h 50m",
+    "bidsCount": 6,
+    "image": "https://i.ibb.co.com/9LQsd8y/Bid7-min.png"
+  }
+]
