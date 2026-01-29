@@ -1,18 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import Cart from "../Cart/Cart";
 import { FaRegHeart } from "react-icons/fa";
-import { addToLocal } from "../localStorage/localStorage";
+import {
+  addToLocal,
+  getLocal,
+  removeLocal,
+} from "../localStorage/localStorage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const ItemContainer = ({ data }) => {
   const [carts, setCarts] = useState([]);
 
+  useEffect(() => {
+    const storedId = getLocal();
+
+    const storedItems = [];
+
+    for (const id of storedId) {
+      const cartItem = data.find((item) => item.id === id);
+      if (cartItem) {
+        storedItems.push(cartItem);
+      }
+    }
+    setCarts(storedItems);
+  }, [data]);
+
   const handleCartAdd = (item) => {
     setCarts([...carts, item]);
+    toast.success(`Item added to favorites ❤️`);
+    addToLocal(item.id);
   };
 
   const handleRemoveCart = (item) => {
     setCarts((pevCarts) => pevCarts.filter((cart) => cart !== item));
+    toast.error(`Item removed from favorites ❌`);
+    removeLocal(item.id);
   };
   return (
     <div className="max-w-11/12 mx-auto flex flex-col lg:flex-row justify-center py-28 gap-6">
@@ -55,6 +80,7 @@ const ItemContainer = ({ data }) => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 };

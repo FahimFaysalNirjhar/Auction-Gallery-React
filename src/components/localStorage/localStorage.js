@@ -15,4 +15,10 @@ const saveToLocal = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-export { addToLocal, getLocal };
+const removeLocal = (id) => {
+  const storedId = getLocal();
+  const remainingId = storedId.filter((storedCartId) => storedCartId !== id);
+  saveToLocal(remainingId);
+};
+
+export { addToLocal, getLocal, removeLocal };
