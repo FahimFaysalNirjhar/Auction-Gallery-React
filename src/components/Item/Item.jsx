@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Item = ({ item }) => {
+const Item = ({ item, handleCartAdd, handleRemoveCart }) => {
   const { title, currentBidPrice, timeLeft, image } = item;
+
+  const [favourite, setFavourite] = useState([]);
 
   return (
     <tr>
@@ -12,10 +14,30 @@ const Item = ({ item }) => {
       <td>{currentBidPrice}</td>
       <td>{timeLeft}</td>
       <td>
-        <button className="btn btn-circle">
+        <button
+          className="btn btn-circle"
+          onClick={() => {
+            setFavourite((previousFavourite) => {
+              const filteredFavourite = previousFavourite.filter(
+                (favId) => favId !== item.id,
+              );
+              if (filteredFavourite.length === previousFavourite.length) {
+                handleCartAdd(item);
+                return [...filteredFavourite, item.id];
+              } else {
+                handleRemoveCart(item);
+                return filteredFavourite;
+              }
+            });
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill={
+              favourite.filter((favId) => favId === item.id).length > 0
+                ? "red"
+                : "none"
+            }
             viewBox="0 0 24 24"
             strokeWidth="2.5"
             stroke="currentColor"
