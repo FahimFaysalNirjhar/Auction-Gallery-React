@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Item from "../Item/Item";
 import Cart from "../Cart/Cart";
 import { FaRegHeart } from "react-icons/fa";
+import { addToLocal } from "../localStorage/localStorage";
 
 const ItemContainer = ({ data }) => {
   const [carts, setCarts] = useState([]);
@@ -35,6 +36,7 @@ const ItemContainer = ({ data }) => {
                 item={item}
                 handleCartAdd={handleCartAdd}
                 handleRemoveCart={handleRemoveCart}
+                carts={carts}
               ></Item>
             ))}
           </tbody>

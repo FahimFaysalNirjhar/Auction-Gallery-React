@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 
-const Item = ({ item, handleCartAdd, handleRemoveCart }) => {
-  const { title, currentBidPrice, timeLeft, image } = item;
+const Item = ({ item, handleCartAdd, handleRemoveCart, carts }) => {
+  const { id, title, currentBidPrice, timeLeft, image } = item;
 
-  const [favourite, setFavourite] = useState([]);
+  const isFavourite = carts.find((cart) => cart.id === id);
+  const handleToggleFavourite = () => {
+    if (isFavourite) {
+      handleRemoveCart(item);
+    } else {
+      handleCartAdd(item);
+    }
+  };
 
   return (
     <tr>
@@ -14,30 +21,10 @@ const Item = ({ item, handleCartAdd, handleRemoveCart }) => {
       <td>{currentBidPrice}</td>
       <td>{timeLeft}</td>
       <td>
-        <button
-          className="btn btn-circle"
-          onClick={() => {
-            setFavourite((previousFavourite) => {
-              const filteredFavourite = previousFavourite.filter(
-                (favId) => favId !== item.id,
-              );
-              if (filteredFavourite.length === previousFavourite.length) {
-                handleCartAdd(item);
-                return [...filteredFavourite, item.id];
-              } else {
-                handleRemoveCart(item);
-                return filteredFavourite;
-              }
-            });
-          }}
-        >
+        <button className="btn btn-circle" onClick={handleToggleFavourite}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill={
-              favourite.filter((favId) => favId === item.id).length > 0
-                ? "red"
-                : "none"
-            }
+            fill={isFavourite ? "red" : "none"}
             viewBox="0 0 24 24"
             strokeWidth="2.5"
             stroke="currentColor"
